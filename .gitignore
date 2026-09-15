@@ -1,0 +1,43 @@
+# ---- Secrets ----
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# ---- Go ----
+backend/bin/
+backend/tmp/
+*.exe
+*.test
+*.out
+coverage.*
+go.work
+go.work.sum
+
+# ---- Node / Frontend ----
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- Local data ----
+pgdata/
+redisdata/
+*.log
+
+# ---- Supabase CLI ----
+supabase/.temp/
+supabase/.branches/
+
+# ---- OS / Editors ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
