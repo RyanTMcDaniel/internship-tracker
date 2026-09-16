@@ -76,13 +76,26 @@ codebase. This is not built for recruiters, career centers, or companies.
 - Two users can never read or modify each other's data, proven by tests.
 - I use it for my own internship applications instead of a spreadsheet.
 
-## Open Questions (Decide Before Phase 1)
+## Decisions
 
-- Does deleting an application hard delete it, or archive it? ==> If it had been submitted then add to an Archive/Rejected bucket. If never submitted then delete.
-- Is Archived a status, or a separate flag? If it is a status, the app forgets
-  what stage the application was in before archiving. ==> Status.
-- Is category a fixed list (for example SWE, Data, PM, Hardware) or free text? ==> Scraper will run on fixed list but can be changed to text.
-- Can Rejected move back to another status, or is it final? ==> Can move back.
-- Are deadlines date-only, or date and time with a time zone? ==> Date
-- How is salary compared when listings mix hourly, monthly, and annual pay? ==> Context based?
-- What counts toward response rate: OA, Interview, Offer, Rejected, or some mix? ==> All minus rejected.
+- **Deleting:** Applications in Saved are hard deleted. Applications past Saved
+  cannot be deleted and must be moved to Archived instead. The API rejects
+  deletes on non-Saved applications.
+- **Archived:** Archived is a status. The previous status is recovered from
+  event history, and un-archiving restores it.
+- **Rejected vs Archived:** Rejected means the company declined. Archived means
+  the user withdrew or stopped pursuing it. They are never combined.
+- **Category:** Fixed list (SWE, Data, PM, Hardware, Other) plus an optional
+  free-text label. The scraper only assigns from the fixed list. Analytics group
+  by the fixed category.
+- **Status transitions:** Rejected can move back to any active status.
+- **Deadlines:** Date only, stored as DATE with no time zone.
+- **Salary:** Store min, max, currency, and period (hour, month, year, unknown)
+  exactly as listed. Sorting uses a computed hourly equivalent (annual / 2080,
+  monthly / 173). Unknown periods sort last. No annualizing.
+- **Response rate:** Applications that ever reached OA, Interview, Offer, or
+  Rejected, divided by applications that ever reached Applied.
+- **Positive rate:** Applications that ever reached OA, Interview, or Offer,
+  divided by applications that ever reached Applied.
+- **Analytics source:** Rates are computed from event history, not current
+  status, so archived applications still count.
