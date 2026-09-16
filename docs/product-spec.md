@@ -78,11 +78,11 @@ codebase. This is not built for recruiters, career centers, or companies.
 
 ## Open Questions (Decide Before Phase 1)
 
-- Does deleting an application hard delete it, or archive it?
+- Does deleting an application hard delete it, or archive it? ==> If it had been submitted then add to an Archive/Rejected bucket. If never submitted then delete.
 - Is Archived a status, or a separate flag? If it is a status, the app forgets
-  what stage the application was in before archiving.
-- Is category a fixed list (for example SWE, Data, PM, Hardware) or free text?
-- Can Rejected move back to another status, or is it final?
-- Are deadlines date-only, or date and time with a time zone?
-- How is salary compared when listings mix hourly, monthly, and annual pay?
-- What counts toward response rate: OA, Interview, Offer, Rejected, or some mix?
+  what stage the application was in before archiving. ==> Status.
+- Is category a fixed list (for example SWE, Data, PM, Hardware) or free text? ==> Scraper will run on fixed list but can be changed to text.
+- Can Rejected move back to another status, or is it final? ==> Can move back.
+- Are deadlines date-only, or date and time with a time zone? ==> Date
+- How is salary compared when listings mix hourly, monthly, and annual pay? ==> Context based?
+- What counts toward response rate: OA, Interview, Offer, Rejected, or some mix? ==> All minus rejected.
